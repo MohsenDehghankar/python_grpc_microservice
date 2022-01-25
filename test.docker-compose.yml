@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  first_service_tester:
+    build:
+      context: .
+      dockerfile: first_service/test.Dockerfile
+    environment:
+      - ENV=TEST
+    networks:
+      - microservices
+
+  second_service_tester:
+    build:
+      context: .
+      dockerfile: second_service/test.Dockerfile
+    environment:
+      - ENV=TEST
+    networks:
+      - microservices
+
+networks:
+  microservices:
+    driver: bridge
+    internal: true

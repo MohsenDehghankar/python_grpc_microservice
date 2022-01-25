@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  first_service:
+    build:
+      context: .
+      dockerfile: first_service/Dockerfile
+    environment:
+      - ENV=PRODUCTION
+    networks:
+      - microservices
+
+  second_service:
+    build:
+      context: .
+      dockerfile: second_service/Dockerfile
+    environment:
+      - ENV=PRODUCTION
+    networks:
+      - microservices
+
+networks:
+  microservices:
+    driver: bridge
+    internal: true

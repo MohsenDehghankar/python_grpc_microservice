@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package second_service.v1;
+
+service SecondService {
+  rpc GetStatus(GetStatusRequest) returns (GetStatusReply);
+  rpc SetStatus(SetStatusRequest) returns (SetStatusReply);
+}
+
+enum StatusType {
+  UNKNOWN_STATUS = 0;
+  STATUS_TYPE_ONE = 1;
+  STATUS_TYPE_TWO = 2;
+}
+
+message GetStatusRequest {
+  StatusType type = 1;
+}
+
+message GetStatusReply {
+  string status = 1;
+}
+
+message SetStatusRequest {
+  StatusType type = 1;
+  string new_value = 2;
+}
+
+message SetStatusReply {
+  string message = 1;
+}
